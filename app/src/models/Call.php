@@ -18,7 +18,7 @@ class Call extends DataObject
     // ];    
 
 	private static $has_one = [
-		'Call' => CallList::class
+		'CallList' => CallList::class
 	];
 
 

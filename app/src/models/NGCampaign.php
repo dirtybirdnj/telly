@@ -17,7 +17,7 @@ class NGCampaign extends DataObject
 		'Description' => 'Text',
 		'State' => 'Varchar(2)',
 	];
-
+	
 	private static $has_many = [
 		'Questions' => Question::class
 	];

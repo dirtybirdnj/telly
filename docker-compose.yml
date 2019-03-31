@@ -1,0 +1,29 @@
+version: '3'
+services:
+ database:
+   image: mysql:5.7
+   command: --init-file /data/application/init.sql
+   volumes:
+    - ./db-data/init.sql:/data/application/init.sql   
+    - db-data:/var/lib/mysql
+   restart: always
+   environment:
+    - MYSQL_HOST=localhost
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_PORT=3306
+    - MYSQL_DATABASE=telly
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=password
+ web:
+   image: dynamicagency/silverstripe-docker
+   working_dir: /var/www
+   ports:
+     - 8080:80
+   volumes:
+    - .:/var/www
+    - ./public:/var/www/html
+   links:
+    - database
+
+volumes:
+ db-data:
