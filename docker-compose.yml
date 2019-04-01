@@ -24,6 +24,5 @@ services:
     - ./public:/var/www/html
    links:
     - database
-
 volumes:
  db-data:
