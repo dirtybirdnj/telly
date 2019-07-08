@@ -9,5 +9,5 @@ SilverStripe sample app to experiment with Twilio API
 2. Run `composer install` to install PHP dependencies
 3. Create volume `docker volume create telly-db`
 4. Run `docker-compose build` to prepare the image
-5. Run `docker-compose up` to start the site on port 8100
+5. Run `docker-compose up` to start the site on port 8100 (http://localhost:8100)
 6. Run `docker-compose down` to kill the site / db process
