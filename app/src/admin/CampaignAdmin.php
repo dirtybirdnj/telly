@@ -5,17 +5,17 @@ use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataQuery;
 
-class NGCampaignAdmin extends ModelAdmin
+class CampaignAdmin extends ModelAdmin
 {
 	private static $managed_models = [
-		NGCampaign::class,
+		Campaign::class,
 		CallList::class,
 	];
 
 	private static $url_segment = 'campaign';
 
 	private static $menu_title = 'Campaigns';
-	
+
 	private static $menu_icon_class = 'font-icon-p-list';
 
 	// public function getEditForm($id = null, $fields = null)

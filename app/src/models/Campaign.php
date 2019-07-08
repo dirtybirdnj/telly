@@ -10,21 +10,21 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextAreaField;
 use SilverStripe\Forms\DropdownField;
 
-class NGCampaign extends DataObject
+class Campaign extends DataObject
 {
 	private static $db = [
 		'Name' => 'Varchar(255)',
 		'Description' => 'Text',
 		'State' => 'Varchar(2)',
 	];
-	
+
 	private static $has_many = [
 		'Questions' => Question::class
 	];
 
 	private static $has_one = [
 		'CallList' => CallList::class
-	];	
+	];
 
 	public function getCMSFields()
 	{
@@ -41,10 +41,10 @@ class NGCampaign extends DataObject
 				$this->Questions(),
 				$config = GridFieldConfig_RecordEditor::create()
 			)
-		]);		
-		
+		]);
+
 		return $fields;
-		
+
 	}
 
 }
