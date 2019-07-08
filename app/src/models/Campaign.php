@@ -1,5 +1,7 @@
 <?php
 
+namespace dirtybirdnj\telly;
+
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\GridField\GridField;
@@ -12,39 +14,41 @@ use SilverStripe\Forms\DropdownField;
 
 class Campaign extends DataObject
 {
-	private static $db = [
-		'Name' => 'Varchar(255)',
-		'Description' => 'Text',
-		'State' => 'Varchar(2)',
-	];
+    private static $db = [
+        'Name' => 'Varchar(255)',
+        'Description' => 'Text',
+        'State' => 'Varchar(2)',
+    ];
 
-	private static $has_many = [
-		'Questions' => Question::class
-	];
+    private static $has_many = [
+        'Questions' => Question::class
+    ];
 
-	private static $has_one = [
-		'CallList' => CallList::class
-	];
+    private static $has_one = [
+        'CallList' => CallList::class
+    ];
 
-	public function getCMSFields()
-	{
+    private static $table_name = 'Campaign';
 
-		$fields = FieldList::create(TabSet::create('Root', [Tab::create('Main')]  )  );
+    public function getCMSFields()
+    {
 
-		$fields->addFieldsToTab('Root.Main', [
+        $fields = FieldList::create(TabSet::create('Root', [Tab::create('Main')]  )  );
+
+        $fields->addFieldsToTab('Root.Main', [
             TextField::create('Name', _t('Name', 'Name')),
-			TextAreaField::create('Description', _t('Description', 'Description')),
-			DropdownField::create('CallList',  _t('CallList', 'CallList'), CallList::get()->map('Title','Title')),
-			GridField::create(
-				'Questions',
-				_t('Questions', 'Questions'),
-				$this->Questions(),
-				$config = GridFieldConfig_RecordEditor::create()
-			)
-		]);
+            TextAreaField::create('Description', _t('Description', 'Description')),
+            DropdownField::create('CallList',  _t('CallList', 'CallList'), CallList::get()->map('Title','Title')),
+            GridField::create(
+                'Questions',
+                _t('Questions', 'Questions'),
+                $this->Questions(),
+                $config = GridFieldConfig_RecordEditor::create()
+            )
+        ]);
 
-		return $fields;
+        return $fields;
 
-	}
+    }
 
 }

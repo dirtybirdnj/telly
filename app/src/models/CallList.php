@@ -18,10 +18,10 @@ class CallList extends DataObject
         'Title' => 'Varchar(255)',
         'Numbers' => 'Text'
     ];
-    
+
     // private static $summary_fields = [
-    //     'Title' => 'Title'  
-    // ];    
+    //     'Title' => 'Title'
+    // ];
 
     private static $has_one = [
         'CSVFile' => File::class,
@@ -31,7 +31,7 @@ class CallList extends DataObject
 	private static $has_many = [
 		'Calls' => Call::class
     ];
-    
+
     public function getCMSFields()
 	{
 
@@ -50,7 +50,7 @@ class CallList extends DataObject
             // $testate_checklist = UploadField::create('TestateChecklist', _t('StateForm.TestateChecklist', 'Checklist (with will)')),
             // $intestate_checklist = UploadField::create('IntestateChecklist', _t('StateForm.IntestateChecklist', 'Checklist (with no will)'))
         ]);
-        
+
 		$fields->addFieldsToTab('Root.Calls', [
 			GridField::create(
 				'Calls',
@@ -60,11 +60,11 @@ class CallList extends DataObject
 			)
             // $testate_checklist = UploadField::create('TestateChecklist', _t('StateForm.TestateChecklist', 'Checklist (with will)')),
             // $intestate_checklist = UploadField::create('IntestateChecklist', _t('StateForm.IntestateChecklist', 'Checklist (with no will)'))
-		]);	        
-		
+		]);
+
 		return $fields;
-		
-	}    
+
+	}
 
 
 }
